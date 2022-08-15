@@ -27,9 +27,13 @@ def post_record():
 def get_record():
     id = request.form.get('record_id')
     if not id:
+        flash('Record not found')
         return redirect(url_for('phonebook'))
 
     phonebook = Phonebook.query.get(id)
+    if not phonebook:
+        flash('Record not found')
+        return redirect(url_for('phonebook'))
 
     if phonebook.user_id != current_user.id:
         flash('You are not allowed to edit this record')
@@ -44,9 +48,13 @@ def get_record():
 def put_record():
     id = request.form.get('record_id')
     if not id:
+        flash('Record not found')
         return redirect(url_for('phonebook'))
 
     phonebook = Phonebook.query.get(id)
+    if not phonebook:
+        flash('Record not found')
+        return redirect(url_for('phonebook'))
 
     if phonebook.user_id != current_user.id:
         flash('You are not allowed to edit this record')
@@ -72,9 +80,13 @@ def put_record():
 def delete_record():
     id = request.form.get('record_id')
     if not id:
+        flash('Record not found')
         return redirect(url_for('phonebook'))
 
     phonebook = Phonebook.query.get(id)
+    if not phonebook:
+        flash('Record not found')
+        return redirect(url_for('phonebook'))
 
     if phonebook.user_id != current_user.id:
         flash('You are not allowed to delete this record')
