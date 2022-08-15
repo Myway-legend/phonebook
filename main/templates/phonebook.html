@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phonebook</title>
+    <link rel="stylesheet" type= "text/css" href="{{ url_for("static", filename = "styles/phonebook.css") }}">
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+{% endwith %}
+<h1>{{ current_user.login }}'s phonebook</h1>
+<form method="POST" action="/data/phonebook/post_record">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="number" placeholder="Number">
+    <input type="text" name="email" placeholder="Email">
+    <input type="text" name="info" placeholder="Info">
+    <button type="submit">Post record</button>
+</form>
+<form method="POST" action="/data/phonebook/put_record">
+    <input type="text" name="record_id" placeholder="Record ID">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="number" placeholder="Number">
+    <input type="text" name="email" placeholder="Email">
+    <input type="text" name="info" placeholder="Info">
+    <button type="submit">Put record</button>
+</form>
+<form method="POST" action="/data/phonebook/delete_record">
+    <input type="text" name="record_id" placeholder="Record ID">
+    <button type="submit">Delete record</button>
+</form>
+<form method="POST" action="/data/phonebook/get_record">
+    <input type="text" name="record_id" placeholder="Record ID">
+    <button type="submit">Get record</button>
+</form>
+<table id="phonebook">
+  <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Email</th>
+      <th>Info</th>
+  </tr>
+  {% for record in records %}
+  <tr>
+      <td>{{ record.id }}</td>
+      <td>{{ record.name }}</td>
+      <td>{{ record.number }}</td>
+      <td>{{ record.email }}</td>
+      <td>{{ record.info }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<div>
+    <form name="form1" method="POST" action="/logout">
+        <label class="logout-label">
+        <input name="logout" type="submit" id="logout" value="LOGOUT">
+        </label>
+    </form>
+</div>
+
+</body>
+</html>

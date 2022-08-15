@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Register Form</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+  <link rel="stylesheet" type= "text/css" href="{{ url_for("static", filename = "styles/register.css") }}">
+</head>
+<body>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+{% endwith %}
+
+<div class="login-form">
+  <form method="POST">
+    <h1>Register Form</h1>
+    <div class="content">
+      <div class="input-field">
+        <input type="text" placeholder="Login" name="login">
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Password" name="password">
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Retype password" name="password-retype">
+      </div>
+        <a href="{{ url_for("login") }}" class="link">Already have an account?</a>
+    </div>
+    <div class="action">
+      <button type="submit" value="Register">Register</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
