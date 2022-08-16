@@ -1,15 +1,24 @@
-from flask import Flask
+from flask import Flask, request
+from flask_babel import Babel
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 from main import config
 
+
 app = Flask(__name__)
 app.secret_key = 'secret?'
 app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_CONNECTION_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 manager = LoginManager(app)
+babel = Babel(app)
 
 from main import models, routes
 db.create_all()
+
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(['en', 'ru'])

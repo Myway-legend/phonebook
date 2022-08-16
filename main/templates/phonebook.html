@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ gettext("en") }}">
 <head>
     <meta charset="UTF-8">
-    <title>Phonebook</title>
+    <title>{{ gettext("Phonebook") }}</title>
     <link rel="stylesheet" type= "text/css" href="{{ url_for("static", filename = "styles/phonebook.css") }}">
 </head>
 <body>
@@ -15,37 +15,37 @@
       </ul>
     {% endif %}
 {% endwith %}
-<h1>{{ current_user.login }}'s phonebook</h1>
+<h1>{{ current_user.login }} - {{ gettext("phonebook") }}</h1>
 <form method="POST" action="/data/phonebook/post_record">
-    <input type="text" name="name" placeholder="Name">
-    <input type="text" name="number" placeholder="Number">
-    <input type="text" name="email" placeholder="Email">
-    <input type="text" name="info" placeholder="Info">
-    <button type="submit">Post record</button>
+    <input type="text" name="name" placeholder="{{ gettext("Name") }}">
+    <input type="text" name="number" placeholder="{{ gettext("Number") }}">
+    <input type="text" name="email" placeholder="{{ gettext("Email") }}">
+    <input type="text" name="info" placeholder="{{ gettext("Info") }}">
+    <button type="submit">{{ gettext("Post record") }}</button>
 </form>
 <form method="POST" action="/data/phonebook/put_record">
-    <input type="text" name="record_id" placeholder="Record ID">
-    <input type="text" name="name" placeholder="Name">
-    <input type="text" name="number" placeholder="Number">
-    <input type="text" name="email" placeholder="Email">
-    <input type="text" name="info" placeholder="Info">
-    <button type="submit">Put record</button>
+    <input type="text" name="record_id" placeholder="{{ gettext("Record ID") }}">
+    <input type="text" name="name" placeholder="{{ gettext("Name") }}">
+    <input type="text" name="number" placeholder="{{ gettext("Number") }}">
+    <input type="text" name="email" placeholder="{{ gettext("Email") }}">
+    <input type="text" name="info" placeholder="{{ gettext("Info") }}">
+    <button type="submit">{{ gettext("Put record") }}</button>
 </form>
 <form method="POST" action="/data/phonebook/delete_record">
-    <input type="text" name="record_id" placeholder="Record ID">
-    <button type="submit">Delete record</button>
+    <input type="text" name="record_id" placeholder="{{ gettext("Record ID") }}">
+    <button type="submit">{{ gettext("Delete record") }}</button>
 </form>
 <form method="POST" action="/data/phonebook/get_record">
-    <input type="text" name="record_id" placeholder="Record ID">
-    <button type="submit">Get record</button>
+    <input type="text" name="record_id" placeholder="{{ gettext("Record ID") }}">
+    <button type="submit">{{ gettext("Get record") }}</button>
 </form>
 <table id="phonebook">
   <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Number</th>
-      <th>Email</th>
-      <th>Info</th>
+      <th>{{ gettext("ID") }}</th>
+      <th>{{ gettext("Name") }}</th>
+      <th>{{ gettext("Number") }}</th>
+      <th>{{ gettext("Email") }}</th>
+      <th>{{ gettext("Info") }}</th>
   </tr>
   {% for record in records %}
   <tr>
@@ -60,7 +60,7 @@
 <div>
     <form name="form1" method="POST" action="/logout">
         <label class="logout-label">
-        <input name="logout" type="submit" id="logout" value="LOGOUT">
+        <input name="logout" type="submit" id="logout" value="{{ gettext("LOGOUT") }}">
         </label>
     </form>
 </div>

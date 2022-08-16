@@ -3,3 +3,5 @@ Flask_SQLAlchemy==2.5.1
 Psycopg2==2.9.3
 Flask-Login==0.6.2
 Werkzeug==2.2.1
+Flask-Babel==2.0.0
+Jinja2==3.1.2

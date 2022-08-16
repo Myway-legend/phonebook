@@ -6,7 +6,7 @@ def validate_number(number):
 
 
 def validate_email(email):
-    return email is None or re.match(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email) is not None
+    return email == "" or re.match(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email) is not None
 
 
 def validate_name(name):

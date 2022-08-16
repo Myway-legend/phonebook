@@ -1,0 +1,136 @@
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-08-16 21:41+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: main/lazy_strings.py:3
+msgid "Invalid data"
+msgstr ""
+
+#: main/lazy_strings.py:4
+msgid "Record not found"
+msgstr ""
+
+#: main/lazy_strings.py:5
+msgid "You are not allowed to get this record"
+msgstr ""
+
+#: main/lazy_strings.py:6
+msgid "You are not allowed to edit this record"
+msgstr ""
+
+#: main/lazy_strings.py:7
+msgid "You are not allowed to delete this record"
+msgstr ""
+
+#: main/templates/login.html:5 main/templates/login.html:23
+msgid "Login Form"
+msgstr ""
+
+#: main/templates/login.html:26 main/templates/register.html:26
+msgid "Login"
+msgstr ""
+
+#: main/templates/login.html:29 main/templates/register.html:29
+msgid "Password"
+msgstr ""
+
+#: main/templates/login.html:31
+msgid "Don't have an account?"
+msgstr ""
+
+#: main/templates/login.html:34
+msgid "Sign in"
+msgstr ""
+
+#: main/templates/phonebook.html:2
+msgid "en"
+msgstr ""
+
+#: main/templates/phonebook.html:5
+msgid "Phonebook"
+msgstr ""
+
+#: main/templates/phonebook.html:18
+msgid "phonebook"
+msgstr ""
+
+#: main/templates/phonebook.html:20 main/templates/phonebook.html:28
+#: main/templates/phonebook.html:45
+msgid "Name"
+msgstr ""
+
+#: main/templates/phonebook.html:21 main/templates/phonebook.html:29
+#: main/templates/phonebook.html:46
+msgid "Number"
+msgstr ""
+
+#: main/templates/phonebook.html:22 main/templates/phonebook.html:30
+#: main/templates/phonebook.html:47
+msgid "Email"
+msgstr ""
+
+#: main/templates/phonebook.html:23 main/templates/phonebook.html:31
+#: main/templates/phonebook.html:48
+msgid "Info"
+msgstr ""
+
+#: main/templates/phonebook.html:24
+msgid "Post record"
+msgstr ""
+
+#: main/templates/phonebook.html:27 main/templates/phonebook.html:35
+#: main/templates/phonebook.html:39
+msgid "Record ID"
+msgstr ""
+
+#: main/templates/phonebook.html:32
+msgid "Put record"
+msgstr ""
+
+#: main/templates/phonebook.html:36
+msgid "Delete record"
+msgstr ""
+
+#: main/templates/phonebook.html:40
+msgid "Get record"
+msgstr ""
+
+#: main/templates/phonebook.html:44
+msgid "ID"
+msgstr ""
+
+#: main/templates/phonebook.html:63
+msgid "LOGOUT"
+msgstr ""
+
+#: main/templates/register.html:5 main/templates/register.html:23
+msgid "Register Form"
+msgstr ""
+
+#: main/templates/register.html:32
+msgid "Retype password"
+msgstr ""
+
+#: main/templates/register.html:34
+msgid "Already have an account?"
+msgstr ""
+
+#: main/templates/register.html:37
+msgid "Register"
+msgstr ""
+

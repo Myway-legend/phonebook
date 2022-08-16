@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Login Form</title>
+  <title>{{ gettext("Login Form") }}</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,700">
   <link rel="stylesheet" type= "text/css" href="{{ url_for("static", filename = "styles/login.css") }}">
 </head>
@@ -20,18 +20,18 @@
 
 <div class="login-form">
   <form method="POST">
-    <h1>Login Form</h1>
+    <h1>{{ gettext("Login Form") }}</h1>
     <div class="content">
       <div class="input-field">
-        <input type="text" placeholder="Login" name="login">
+        <input type="text" placeholder="{{ gettext("Login") }}" name="login">
       </div>
       <div class="input-field">
-        <input type="password" placeholder="Password" name="password">
+        <input type="password" placeholder="{{ gettext("Password") }}" name="password">
       </div>
-        <a href="{{ url_for("register") }}" class="link">Don't have an account?</a>
+        <a href="{{ url_for("register") }}" class="link">{{ gettext("Don't have an account?") }}</a>
     </div>
     <div class="action">
-      <button type="submit" value="Login">Sign in</button>
+      <button type="submit" value="Login">{{ gettext("Sign in") }}</button>
     </div>
   </form>
 </div>
