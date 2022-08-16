@@ -1,2 +1,2 @@
 # phonebook
-Phonebook made with Python, Flask, SQLAlchemy and deployed with Docker
+Phonebook made with Python, Flask, SQLAlchemy, PostgreSQL and deployed with Docker
