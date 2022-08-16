@@ -3,6 +3,7 @@ from flask_login import UserMixin
 from main import db, manager
 
 
+# Phonebook ORM model
 class Phonebook(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -28,6 +29,7 @@ class Phonebook(db.Model):
         }
 
 
+# User ORM model
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(128), nullable=False, unique=True)
@@ -39,6 +41,7 @@ class User(db.Model, UserMixin):
         self.password = password
 
 
+# Check if user exists in database
 @manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)

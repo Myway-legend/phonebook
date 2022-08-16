@@ -1,5 +1,7 @@
 from flask_babel import lazy_gettext
 
+
+# Template strings for GUI
 invalid_data = lazy_gettext('Invalid data')
 r_not_found = lazy_gettext('Record not found')
 not_allowed_get = lazy_gettext('You are not allowed to get this record')

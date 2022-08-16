@@ -1,6 +1,7 @@
 import os
 
 
+# Create a DB_URI from the environment variables
 user = os.environ['POSTGRES_USER']
 password = os.environ['POSTGRES_PASSWORD']
 host = os.environ['POSTGRES_HOST']

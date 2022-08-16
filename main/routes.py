@@ -8,6 +8,7 @@ from main.validation import validate_name, validate_number, validate_email
 from main.lazy_strings import invalid_data, r_not_found, not_allowed_get, not_allowed_edit, not_allowed_delete
 
 
+# Add record to phonebook endpoint
 @app.route('/data/phonebook/post_record', methods=['POST'])
 @login_required
 def post_record():
@@ -25,6 +26,7 @@ def post_record():
     return redirect(url_for('phonebook'))
 
 
+# Get record from phonebook endpoint
 @app.route('/data/phonebook/get_record', methods=['POST'])
 @login_required
 def get_record():
@@ -46,6 +48,7 @@ def get_record():
                            records=[phonebook, None])
 
 
+# Edit record in phonebook endpoint
 @app.route('/data/phonebook/put_record', methods=['POST'])
 @login_required
 def put_record():
@@ -80,6 +83,7 @@ def put_record():
     return redirect(url_for('phonebook'))
 
 
+# Delete record from phonebook endpoint
 @app.route('/data/phonebook/delete_record', methods=['POST'])
 @login_required
 def delete_record():
@@ -102,12 +106,14 @@ def delete_record():
     return redirect(url_for('phonebook'))
 
 
+# Phonebook default page
 @app.route('/phonebook', methods=['GET'])
 @login_required
 def phonebook():
     return render_template('phonebook.html', records=current_user.records)
 
 
+# Register page for new users
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -129,6 +135,7 @@ def register():
     return render_template('register.html')
 
 
+# Login page for existing users
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -153,6 +160,7 @@ def login():
     return render_template('login.html')
 
 
+# Logout endpoint
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
@@ -160,6 +168,7 @@ def logout():
     return redirect(url_for('login'))
 
 
+# Redirect to login page if user is not logged in
 @app.after_request
 def redirect_to_signin(response):
     if response.status_code == 401:
