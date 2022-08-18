@@ -10,6 +10,12 @@ body {
   font-family: 'Rubik', sans-serif;
 }
 
+.lang-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .login-form {
   background: #fff;
   width: 500px;

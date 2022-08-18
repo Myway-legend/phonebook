@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="{{ gettext("en") }}">
 <head>
   <meta charset="UTF-8">
   <title>{{ gettext("Register Form") }}</title>
@@ -17,7 +17,9 @@
       </ul>
     {% endif %}
 {% endwith %}
-
+<form class="lang-btn" method="POST" action="/change_language">
+    <input type="submit" value="{{ gettext("RU") }}">
+</form>
 <div class="login-form">
   <form method="POST">
     <h1>{{ gettext("Register Form") }}</h1>

@@ -1,4 +1,4 @@
-from flask import request, redirect, flash, render_template, url_for
+from flask import request, redirect, flash, render_template, url_for, session
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -174,3 +174,12 @@ def redirect_to_signin(response):
     if response.status_code == 401:
         return redirect(url_for('login') + '?next=' + request.url)
     return response
+
+
+@app.route('/change_language', methods=['GET', 'POST'])
+def change_language():
+    if session.get('lang') == 'en':
+        session['lang'] = 'ru'
+    else:
+        session['lang'] = 'en'
+    return redirect(request.referrer)

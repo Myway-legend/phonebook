@@ -15,6 +15,9 @@
       </ul>
     {% endif %}
 {% endwith %}
+<form class="lang-btn" method="POST" action="/change_language">
+    <input type="submit" value="{{ gettext("RU") }}">
+</form>
 <h1>{{ current_user.login }} - {{ gettext("phonebook") }}</h1>
 <form method="POST" action="/data/phonebook/post_record">
     <input type="text" name="name" placeholder="{{ gettext("Name") }}">

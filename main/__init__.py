@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, session
 from flask_babel import Babel
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -21,7 +21,11 @@ babel = Babel(app)
 from main import models, routes
 db.create_all()
 
-# Language choice
+
+# Language choice after every request
+# If user have not chosen language manually, then use browser language
 @babel.localeselector
-def get_locale():
+def get_user_locale():
+    if session.get('lang'):
+        return session['lang']
     return request.accept_languages.best_match(['en', 'ru'])
