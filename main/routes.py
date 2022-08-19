@@ -4,8 +4,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from main import db, app
 from main.models import Phonebook, User
-from main.validation import validate_name, validate_number, validate_email
-from main.lazy_strings import invalid_data, r_not_found, not_allowed_get, not_allowed_edit, not_allowed_delete
+from main.validation import validate_name, validate_number, validate_email, valid_ph_or_redirect
+from main.lazy_strings import invalid_data
 
 
 # Add record to phonebook endpoint
@@ -30,41 +30,21 @@ def post_record():
 @app.route('/data/phonebook/get_record', methods=['POST'])
 @login_required
 def get_record():
-    id = request.form.get('record_id')
-    if not id:
-        flash(r_not_found)
-        return redirect(url_for('phonebook'))
-
-    phonebook = Phonebook.query.get(id)
-    if not phonebook:
-        flash(r_not_found)
-        return redirect(url_for('phonebook'))
-
-    if phonebook.user_id != current_user.id:
-        flash(not_allowed_get)
-        return redirect(url_for('phonebook'))
+    res = valid_ph_or_redirect(request.form.get('record_id'), 'get')
+    if type(res) is not Phonebook:
+        return res
 
     return render_template('phonebook.html',
-                           records=[phonebook, None])
+                           records=[res, None])
 
 
 # Edit record in phonebook endpoint
 @app.route('/data/phonebook/put_record', methods=['POST'])
 @login_required
 def put_record():
-    id = request.form.get('record_id')
-    if not id:
-        flash(r_not_found)
-        return redirect(url_for('phonebook'))
-
-    phonebook = Phonebook.query.get(id)
-    if not phonebook:
-        flash(r_not_found)
-        return redirect(url_for('phonebook'))
-
-    if phonebook.user_id != current_user.id:
-        flash(not_allowed_edit)
-        return redirect(url_for('phonebook'))
+    res = valid_ph_or_redirect(request.form.get('record_id'), 'edit')
+    if type(res) is not Phonebook:
+        return res
 
     name = request.form.get('name')
     number = request.form.get('number')
@@ -72,10 +52,10 @@ def put_record():
     info = request.form.get('info')
 
     if validate_name(name) and validate_number(number) and validate_email(email):
-        phonebook.name = name
-        phonebook.number = number
-        phonebook.email = email
-        phonebook.info = info
+        res.name = name
+        res.number = number
+        res.email = email
+        res.info = info
         db.session.commit()
     else:
         flash(invalid_data)
@@ -87,21 +67,11 @@ def put_record():
 @app.route('/data/phonebook/delete_record', methods=['POST'])
 @login_required
 def delete_record():
-    id = request.form.get('record_id')
-    if not id:
-        flash(r_not_found)
-        return redirect(url_for('phonebook'))
+    res = valid_ph_or_redirect(request.form.get('record_id'), 'edit')
+    if type(res) is not Phonebook:
+        return res
 
-    phonebook = Phonebook.query.get(id)
-    if not phonebook:
-        flash(r_not_found)
-        return redirect(url_for('phonebook'))
-
-    if phonebook.user_id != current_user.id:
-        flash(not_allowed_delete)
-        return redirect(url_for('phonebook'))
-
-    db.session.delete(phonebook)
+    db.session.delete(res)
     db.session.commit()
     return redirect(url_for('phonebook'))
 
